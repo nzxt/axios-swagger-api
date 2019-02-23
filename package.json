@@ -1,0 +1,21 @@
+{
+  "name": "axios-swagger-api",
+  "version": "1.0.0",
+  "description": "API genegarion from Swagger JSON object",
+  "scripts": {
+    "dev": "nuxt",
+    "change-tpl": "cpx ./swagger/js-template/generator.js ./node_modules/swagger-vue-generator/src/2.0/generator-api/ -u",
+    "hdapi-gen": "node ./node_modules/swagger-vue-generator/bin/generate-api.js -s ./swagger/hdsystem.json -d ./swagger/hd-api.js -c HD -m hd-api",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NZXTUA",
+  "license": "MIT",
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/vuetify": "^0.5.5",
+    "cpx": "^1.5.0",
+    "nuxt": "^2.4.3",
+    "swagger": "^0.7.5",
+    "swagger-vue-generator": "^1.0.6"
+  }
+}

@@ -1,0 +1,29 @@
+/* eslint-disable */
+import qs from 'qs'
+
+export default class {{&className}}ApiService {
+    constructor(ctx) {
+        this.$axios = ctx.$axios
+        this.$domain = ctx.baseURL
+    }
+
+    request (method, url, body, queryParameters, form, config) {
+        method = method.toLowerCase()
+        let keys = Object.keys(queryParameters)
+        let queryUrl = url
+        
+        if (keys.length > 0) {
+            queryUrl = url + '?' + qs.stringify(queryParameters)
+        }
+
+        if (body){
+            return this.$axios[method](queryUrl,body,config)
+        } else if (method === 'get') {
+            return this.$axios[method](queryUrl, config)
+        } else {
+            return this.$axios[method](queryUrl,qs.stringify(form),config)
+        }
+    }
+
+    {{> methods }}
+}
